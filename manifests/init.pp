@@ -11,16 +11,16 @@ define ruby(
     $version = $title
   }
 
-  # Set environment variables that control Ruby GC parameters.
-  file { '/etc/environment':
-    ensure  => file,
-    content => template('soupmailapi_app_server/environment.sh.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '644'
-  }
-
   if !defined(Rvm_system_ruby[$version]) {
+    # Set environment variables that control Ruby GC parameters.
+    file { '/etc/environment':
+      ensure  => file,
+      content => template('ruby/environment.sh.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644'
+    }
+
     rvm_system_ruby { "${version}":
       ensure      => present,
       default_use => true
