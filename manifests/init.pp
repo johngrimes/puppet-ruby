@@ -34,13 +34,13 @@ define ruby(
       require => Rvm_system_ruby[$version]
     }
 
-    file { '/usr/local/rvm':
-      ensure  => directory,
-      owner   => 'root',
-      group   => 'rvm',
-      mode    => 'g+w',
-      recurse => true,
-      require => Class['rvm::system']
-    }
+    #file { '/usr/local/rvm':
+    #  ensure  => directory,
+    #  owner   => 'root',
+    #  group   => 'rvm',
+    #  mode    => 'g+w',
+    #  recurse => true,
+    #  require => Class['rvm::system']
+    #}
   }
 }
